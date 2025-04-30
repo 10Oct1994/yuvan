@@ -1,0 +1,176 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sultaniya World Blog</title>
+  <style>
+    :root {
+      --bg-light: #f0f4f8;
+      --text-light: #1a1a1a;
+      --bg-dark: #121212;
+      --text-dark: #e0e0e0;
+      --card-bg-light: #ffffff;
+      --card-bg-dark: #1e1e1e;
+      --card-shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      font-size: 1em;
+      transition: all 0.3s ease;
+    }
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .hero {
+      position: relative;
+      padding: 60px 20px;
+      text-align: center;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/4/47/Shiva_Nataraja_Met.jpg') no-repeat center center;
+      background-size: contain;
+      background-blend-mode: lighten;
+      background-color: rgba(255, 255, 255, 0.1);
+      opacity: 0.95;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px;
+    }
+
+    button, select {
+      padding: 8px 14px;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #0077cc;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover, select:hover {
+      background-color: #005fa3;
+    }
+
+    .sections {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 40px 10px;
+    }
+
+    .section {
+      flex: 1 1 280px;
+      margin: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: var(--card-bg-light);
+      box-shadow: 0 2px 5px var(--card-shadow);
+      transition: background-color 0.3s ease;
+    }
+
+    body.dark .section {
+      background-color: var(--card-bg-dark);
+    }
+
+    .live-time {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.1em;
+    }
+
+    @media (max-width: 768px) {
+      .controls {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1 id="greeting">Welcome!</h1>
+    <div class="live-time" id="time"></div>
+  </div>
+
+  <div class="controls">
+    <button onclick="toggleDarkMode()">Toggle Light/Dark</button>
+    <button onclick="zoomText(1)">A+</button>
+    <button onclick="zoomText(-1)">A-</button>
+    <select onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+    </select>
+  </div>
+
+  <div class="sections">
+    <div class="section" id="health">Health Blog Section</div>
+    <div class="section" id="travel">Travel Blog Section</div>
+    <div class="section" id="international">International Issues Section</div>
+  </div>
+
+  <script>
+    const timeElement = document.getElementById("time");
+    const greeting = document.getElementById("greeting");
+    let fontSize = 1;
+
+    function updateTime() {
+      const now = new Date();
+      const hour = now.getHours();
+      const minute = now.getMinutes().toString().padStart(2, '0');
+      const second = now.getSeconds().toString().padStart(2, '0');
+      const greetingText = hour < 12 ? "Good Morning!" :
+                           hour < 17 ? "Good Afternoon!" : "Good Evening!";
+      timeElement.textContent = `Current Time: ${hour}:${minute}:${second}`;
+      if (document.documentElement.lang === 'en') {
+        greeting.textContent = greetingText;
+      }
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+
+    function zoomText(factor) {
+      fontSize += factor * 0.1;
+      document.body.style.fontSize = fontSize + "em";
+    }
+
+    function changeLanguage(lang) {
+      document.documentElement.lang = lang;
+      if (lang === "hi") {
+        greeting.textContent = "स्वागत है!";
+        document.getElementById("health").textContent = "स्वास्थ्य अनुभाग";
+        document.getElementById("travel").textContent = "यात्रा अनुभाग";
+        document.getElementById("international").textContent = "अंतरराष्ट्रीय मुद्दे अनुभाग";
+      } else {
+        updateTime(); // reset greeting to English
+        document.getElementById("health").textContent = "Health Blog Section";
+        document.getElementById("travel").textContent = "Travel Blog Section";
+        document.getElementById("international").textContent = "International Issues Section";
+      }
+    }
+  </script>
+</body>
+</html>
