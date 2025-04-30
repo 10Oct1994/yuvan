@@ -3,8 +3,6 @@
 **Sultaniya World Blog** is a modern, lightweight personal blog website created using HTML, CSS, and JavaScript.  
 It features rich content on **Health**, **Travel**, and **International Issues** with an easy, multilingual interface and accessibility features — designed with Indian values and a global vision.
 
----
-
 ## ✨ Live Features
 
 - 🌞 Light / 🌚 Dark mode toggle
@@ -14,26 +12,24 @@ It features rich content on **Health**, **Travel**, and **International Issues**
 - 📚 Well-structured sections: Health, Travel, and Global Issues
 - 💻 Responsive layout suitable for desktop and mobile
 
----
-
 ## 📁 Project Structure
 
----
+```
+sultaniya-blog/
+├── index.html
+├── README.md
+├── style.css
+├── script.js
+└── assets/
+    └── images/
+        └── banner.jpg
+```
 
 ## 🧑‍💻 Technologies Used
 
-- **HTML5** – for semantic and structured content  
-- **CSS3** – for responsive design, theming, and UI layout  
-- **Vanilla JavaScript** – for interactivity and dynamic elements  
+- HTML5, CSS3, JavaScript
 
----
+## 👤 Author
 
-## 🚀 How to Run
-
-👤
-Mr. Vikash Yadav Sultaniya
-
-Laboratory Technician At Rajasthan Health Department
-
-🌐 Passionate about blogging, tech, and Indian values
-
+**Mr. Vikash Yadav Sultaniya**  
+LT – Health Department, Churu (Rajasthan)
