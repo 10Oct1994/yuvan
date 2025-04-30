@@ -16,13 +16,14 @@ It features rich content on **Health**, **Travel**, and **International Issues**
 
 ```
 sultaniya-blog/
-├── index.html
-├── README.md
-├── style.css
-├── script.js
+├── index.html           # Main landing page of the blog
+├── style.css            # All the styles and theme definitions
+├── script.js            # JavaScript for interactivity (theme switch, time, language)
+├── README.md            # Project overview and instructions
 └── assets/
-    └── images/
-        └── banner.jpg
+    └── banner.jpg       # Blog banner or featured image
+
+
 ```
 
 ## 🧑‍💻 Technologies Used
